@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.example.swuassistant"
+<manifest package="com.swuos.swuassistant"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!--<uses-permission android:name="android.permission.WAKE_LOCK"/>-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="com.xiaomi.market.sdk.UPDATE"/>
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".LoginActivity"
-            android:launchMode="singleTop"
-            android:label="@string/app_name">
+
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -22,12 +30,65 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:launchMode="singleTop"
-            android:label="@string/app_name">
-
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"
+            android:launchMode="standard">
         </activity>
+        <activity
+            android:name=".WifiActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard"/>
+        <activity
+            android:name=".SettingActivity"
+            android:screenOrientation="portrait"
 
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".AboutActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="standard"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name="com.swuos.ALLFragment.card.ConsumeActivityImp"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name="com.swuos.ALLFragment.swujw.schedule.SchedulDetialActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name="com.swuos.ALLFragment.library.search.views.SearchAtyImp"/>
+        <activity android:name="com.swuos.ALLFragment.library.search.views.BookDetailViewAty"/>
+
+        <service android:name="com.swuos.Service.ClassAlarmService"/>
+        <service android:name="com.swuos.Service.ScheduleNotificationService"/>
+        <service android:name="com.swuos.Service.WifiNotificationService"></service>
+
+        <receiver android:name="com.swuos.widget.wifi.wifi_widgets">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="WIDGET_LOGIN"/>
+                <action android:name="WIDGET_LOGOUT"/>
+                <action android:name="WIDGET_LOGINFO"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/wifi_widgets_info"/>
+        </receiver>
+
+        <receiver android:name="com.swuos.BroacastReceiver.MwifiBroadcast">
+            <intent-filter android:priority="100">
+                <action android:name="NOTIFICATION_LOGIN"/>
+                <action android:name="NOTIFICATION_LOGOUT"/>
+                <action android:name="android.net.wifi.STATE_CHANGE"/>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
+
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.xiaomi.market.sdk.DownloadCompleteReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

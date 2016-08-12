@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TableLayout
+        android:id="@+id/show_gaades_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:background="@color/colorPrimary">
+
+            <Spinner
+                android:id="@+id/xnm"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:layout_weight="1"
+                android:entries="@array/xnm"/>
+
+
+            <Spinner
+                android:id="@+id/xqm"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:entries="@array/xqm"/>
+
+            <Button
+                android:id="@+id/grade_inquire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="查询"/>
+        </LinearLayout>
+
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:text="科目"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="成绩"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+
+                android:text="绩点"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="学分"
+                android:textSize="20dp"/>
+
+
+        </TableRow>
+
+        <ListView
+            android:id="@+id/grades_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+        </ListView>
+
+
+    </TableLayout>
+</LinearLayout>
